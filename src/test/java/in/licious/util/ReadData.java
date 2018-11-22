@@ -51,4 +51,29 @@ public class ReadData {
 		}
 		return value;
 	}
+public static int readDataFromExcelint(String excelFilePath,String excelSheetName,int rowNumber,int columnNumber){
+		
+		FileInputStream fis=null;
+		int value=0;
+		try {
+			fis = new FileInputStream(excelFilePath);
+			if(rowNumber>0){
+				//value=WorkbookFactory.create(fis).getSheet(excelSheetName).getRow(rowNumber).getCell(columnNumber).toString();
+				//The above of line code was converting yyyy-mm-dd to dd-mon-yyyy hence using below line of code
+				value=(int) WorkbookFactory.create(fis).getSheet(excelSheetName).getRow(rowNumber).getCell(columnNumber).getNumericCellValue();
+			}
+			else{
+				throw new RuntimeException("rowNumber should be greater than one");
+		}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}catch (EncryptedDocumentException e) {
+			e.printStackTrace();
+		} catch (InvalidFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return value;
+	}
 }

@@ -3,76 +3,20 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
   <test name="Test(failed)">
     <classes>
-      <class name="in.licious.test.WeekendTreatsCOD">
+      <class name="in.licious.dataplanning_API.BriningApi">
         <methods>
-          <include name="closeFramework"/>
-          <include name="tearDown"/>
-          <include name="testcoldcuts"/>
-          <include name="initFramework"/>
-          <include name="setUp"/>
-          <include name="initGlobalConstants"/>
+          <include name="generatebriningPlanTest_TC05"/>
+          <include name="beforeTest"/>
+          <include name="aftermethod"/>
         </methods>
-      </class> <!-- in.licious.test.WeekendTreatsCOD -->
-      <class name="in.licious.test.EggsCOD">
+      </class> <!-- in.licious.dataplanning_API.BriningApi -->
+      <class name="in.licious.dataplanning_API.CreateDemandPlanWithBuffers">
         <methods>
-          <include name="testeggscod"/>
-          <include name="closeFramework"/>
-          <include name="tearDown"/>
-          <include name="initFramework"/>
-          <include name="setUp"/>
-          <include name="initGlobalConstants"/>
+          <include name="beforeTest"/>
+          <include name="updateDemandPlanWithBuffersTest_TC02"/>
+          <include name="aftermethod"/>
         </methods>
-      </class> <!-- in.licious.test.EggsCOD -->
-      <class name="in.licious.test.ExoticCOD">
-        <methods>
-          <include name="closeFramework"/>
-          <include name="tearDown"/>
-          <include name="initFramework"/>
-          <include name="setUp"/>
-          <include name="testexotic"/>
-          <include name="initGlobalConstants"/>
-        </methods>
-      </class> <!-- in.licious.test.ExoticCOD -->
-      <class name="in.licious.test.ColdCutsCOD">
-        <methods>
-          <include name="testcoldcuts"/>
-          <include name="closeFramework"/>
-          <include name="tearDown"/>
-          <include name="initFramework"/>
-          <include name="setUp"/>
-          <include name="initGlobalConstants"/>
-        </methods>
-      </class> <!-- in.licious.test.ColdCutsCOD -->
-      <class name="in.licious.test.PicklesCOD">
-        <methods>
-          <include name="closeFramework"/>
-          <include name="tearDown"/>
-          <include name="initFramework"/>
-          <include name="testpickles"/>
-          <include name="setUp"/>
-          <include name="initGlobalConstants"/>
-        </methods>
-      </class> <!-- in.licious.test.PicklesCOD -->
-      <class name="in.licious.test.MarinadesCOD">
-        <methods>
-          <include name="closeFramework"/>
-          <include name="tearDown"/>
-          <include name="testmarinadescod"/>
-          <include name="initFramework"/>
-          <include name="setUp"/>
-          <include name="initGlobalConstants"/>
-        </methods>
-      </class> <!-- in.licious.test.MarinadesCOD -->
-      <class name="in.licious.test.RedMeatsCOD">
-        <methods>
-          <include name="testredmeatscod"/>
-          <include name="closeFramework"/>
-          <include name="tearDown"/>
-          <include name="initFramework"/>
-          <include name="setUp"/>
-          <include name="initGlobalConstants"/>
-        </methods>
-      </class> <!-- in.licious.test.RedMeatsCOD -->
+      </class> <!-- in.licious.dataplanning_API.CreateDemandPlanWithBuffers -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

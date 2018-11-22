@@ -12,7 +12,8 @@ public class InitProperties {
 		
 		try {
 			for(String fileName:propertiesFileNamesWithoutExtension){			
-			property.load(new FileReader(System.getProperty("user.dir")+"\\config\\"+fileName+".properties"));
+			property.load(new FileReader("/Users/deepa/eclipse-workspace/Data_Planning_API_Automation/config/config.properties"));
+					//System.getProperty("user.dir")+"\\config\\"+fileName+".properties"));
 			
 			}
 

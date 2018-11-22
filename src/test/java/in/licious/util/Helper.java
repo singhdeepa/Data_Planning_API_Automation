@@ -8,6 +8,7 @@ import java.awt.Toolkit;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Iterator;
@@ -172,5 +173,17 @@ public class Helper {
      //Here i pass values based on css style. Yellow background color with solid red color border. 
 js.executeScript("arguments[0].setAttribute('style', 'background: yellow; border: 2px solid red;');", elementTohilightLight);
 }
+ public static String getCurrentDateTime()
+	{
+		DateFormat dateFormat = new SimpleDateFormat("MM_dd_yyyy_HH_mm_ss");
+		 
+		 //get current date time with Date()
+		 Date date = new Date();
+		 
+		 // Now format the date
+		 String datenew= dateFormat.format(date);
+		 
+		 return datenew;
+	}
  
 }

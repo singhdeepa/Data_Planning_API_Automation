@@ -2,80 +2,102 @@ package in.licious.dataplanning_API;
 
 import org.testng.annotations.Test;
 import org.testng.AssertJUnit;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+import org.testng.AssertJUnit;
+
+import java.io.File;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import in.licious.util.Helper;
 import in.licious.util.ReadData;
+import in.licious.util.Utilities;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 
-public class CreateDemandPlanWithBuffers {
+public class CreateDemandPlanWithBuffers  {
+	ExtentReports extent;
+	 ExtentTest logger;
+	 Helper helper=new Helper();
+		
+	 @BeforeTest
+	 public void beforeTest()
+	 {
+		 extent = new ExtentReports ("/Users/deepa/eclipse-workspace/Data_Planning_API_Automation/API_HTML_Report/" +helper.getCurrentDateTime()+".html", false);
+		 //extent.addSystemInfo("Environment","Environment Name")
+		 extent
+		                .addSystemInfo("Host Name", "QA TEAM")
+		                .addSystemInfo("Environment", "Automation Testing")
+		                .addSystemInfo("User Name", "Deepa singh");
+		                //loading the external xml file (i.e., extent-config.xml) which was placed under the base directory
+		                //You could find the xml file below. Create xml file in your project and copy past the code mentioned below
+		                extent.loadConfig(new File("/Users/deepa/eclipse-workspace/Data_Planning_API_Automation/extent-config.xml"));
+		 
+		                
+	 }
 	@Test
 	public void updateDemandPlanWithBuffersTest_TC02()
 	{
+		logger = extent.startTest("Execution Started for Demand Plan With Buffers "); 
+		AssertJUnit.assertTrue(true); 
 	//RequestSpecification request = RestAssured.given();
 		ReadData rd=new ReadData();
 		JSONObject requestParams = new JSONObject();
 		JSONArray authArray = new JSONArray();
 		JSONObject authparam = new JSONObject();
-		String excelFilePath="/Users/deepa/eclipse-workspace/websiteautomation/ExcelData/DataPlanning.xlsx";
+		String excelFilePath="/Users/deepa/eclipse-workspace/Data_Planning_API_Automation/ExcelData/DataPlanning.xlsx";
 		
-//		requestParams.put("week","44" );
-//		requestParams.put("year", "2018");
-//		requestParams.put("city_id", "1");
-//		
-//		
-//		
-//		 authparam.put("date", "2018-11-30");
-//		 authparam.put("product_id", "pr_5785b9065d7e1");
-//		 authparam.put("hub_id","4");
-//		 authparam.put("percent_buffer","0");
-//		 authparam.put("unit_buffer","0");
-//		 authparam.put("final_value", "100");
-		
-		
-		
-		
+
 		
 		//rd.readDataFromExcel(excelFilePath, "Dataplanning", 1, 2);
-		requestParams.put("week",rd.readDataFromExcel(excelFilePath, "Dataplanning", 1, 2) );
-		requestParams.put("year", rd.readDataFromExcel(excelFilePath, "Dataplanning", 1, 3));
-		requestParams.put("city_id", rd.readDataFromExcel(excelFilePath, "Dataplanning", 1, 1));
+		requestParams.put("week",rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 4) );
+		logger.log(LogStatus.PASS, "Week for the Demand Plan With Buffers  is "+rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 4));
+		requestParams.put("year", rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 5));
+		logger.log(LogStatus.PASS, "YEAR for the Demand Plan With Buffers  is "+rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 5));
+		requestParams.put("city_id", rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 3));
+		logger.log(LogStatus.PASS, "City ID for the Demand Plan With Buffers  is "+rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 3));
 		
 		
 		
-		 authparam.put("date", rd.readDataFromExcel(excelFilePath, "Dataplanning", 1, 5));
-		 authparam.put("product_id", rd.readDataFromExcel(excelFilePath, "Dataplanning", 1, 4));
-		 authparam.put("hub_id", rd.readDataFromExcel(excelFilePath, "Dataplanning", 1, 6));
-		 authparam.put("percent_buffer", rd.readDataFromExcel(excelFilePath, "Dataplanning", 1, 7));
-		 authparam.put("unit_buffer",rd.readDataFromExcel(excelFilePath, "Dataplanning", 1, 8));
-		 authparam.put("final_value", rd.readDataFromExcel(excelFilePath, "Dataplanning", 1, 9));
+		 authparam.put("date", rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 30));
+		 logger.log(LogStatus.PASS, "Date for the Demand Plan With Buffers  is "+rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 30));
+		 authparam.put("product_id", rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 6));
+		 logger.log(LogStatus.PASS, "Product ID for the Demand Plan With Buffers  is "+rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 6));
+		 authparam.put("hub_id", rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 8));
+		 logger.log(LogStatus.PASS, "Hub ID for the Demand Plan With Buffers  is "+rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 8));
+		 authparam.put("percent_buffer", rd.readDataFromExcelint(excelFilePath, "Dataplanning", 2, 9));
+		 logger.log(LogStatus.PASS, "Percentage Buffers for the Demand Plan With Buffers  is "+rd.readDataFromExcelint(excelFilePath, "Dataplanning", 2, 9));
+		 authparam.put("unit_buffer",rd.readDataFromExcelint(excelFilePath, "Dataplanning", 2, 10));
+		 logger.log(LogStatus.PASS, "Unit Buffers for the Demand Plan With Buffers  is "+rd.readDataFromExcelint(excelFilePath, "Dataplanning", 2, 10));
+		 authparam.put("final_value", rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 11));
 		 authArray.add(authparam);
 
 		 requestParams.put("data", authArray);
-
-//		Map<String, Object> map = new HashMap<>();
-//		map.put("week", "44");
-//		map.put("year", "2018");
-//		map.put("city_id", new Integer(1));
-//		map.put("data", Arrays.asList(new HashMap<String, Object>() {{
-//		    put("date", "2018-11-30");
-//		    put("product_id", "pr_5785b9065d7e1");
-//		    put("hub_id", "4");
-//		    put("percent_buffer", new Integer(0));
-//		    put("unit_buffer",new Integer(0));
-//		    put("final_value", new Integer(100));
-//		}}
-//		));
-		
+	    System.out.println( requestParams.put("data", authArray));
 		RequestSpecification request = RestAssured.given();
 		
 		// Add a header stating the Request body is a JSON
@@ -84,18 +106,30 @@ public class CreateDemandPlanWithBuffers {
 		request.header("token", "e6e061838856bf47e1de730719fb2609");
 		
 		request.body(requestParams.toJSONString());
-		
-		Response response = request.post("https://planning-api.licious.in/forecast/services/demandplan/create");
+			
+		Response response = request.post(rd.readDataFromExcel(excelFilePath, "Dataplanning", 2, 2));
 		//http://13.126.207.17/forecast/services/demandplan/create
 
 		int statusCode = response.getStatusCode();
 		AssertJUnit.assertEquals(statusCode, 200);
+		logger.log(LogStatus.PASS, "Demand Plan With Buffers  Response  is verified successfully");
 		String data = response.getContentType();
 		ResponseBody data1 = response.getBody();
 
+		String datta=response.body().asString();
+		System.out.println(datta);
 		System.out.println(statusCode);
 		System.out.println(data);
 		System.out.println(data1.asString());
+		 extent.endTest(logger);
 		
+		 
 	}
+	  @AfterTest
+		public void aftermethod()
+		{
+		 
+			extent.flush();
+			extent.close();
+		}
 }

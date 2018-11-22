@@ -50,52 +50,52 @@ public abstract class BaseTest implements  AutomationConstant {
 		ereport=new ExtentReports(EXTENT_REPORT_PATH);
 		log.info("framework is initialised");
 	}
-	@BeforeTest
-	public void initGlobalConstants(){
-		browserName=properties.getProperty("browserName");
-		url=properties.getProperty("url");
-		userName=properties.getProperty("username");
-		passWord=properties.getProperty("password");
-		location=properties.getProperty("location");
-		implicitWait=Integer.parseInt(properties.getProperty("implicitWait"));
-		log.info(browserName);
-		log.info(url);
-		log.info(userName);
-		log.info(passWord);
-		log.info(implicitWait);
-	}
-	@BeforeMethod
-	public void setUp(Method m){
-		etest=ereport.startTest(m.getName());
-		SetUpDrivers setupDriver=new SetUpDrivers();
-		if(browserName.equalsIgnoreCase("firefox")){
-			driver=setupDriver.launchFirefoxDriver(url);
-		}
-		else if(browserName.equalsIgnoreCase("ie")){
-			driver=setupDriver.launchInternetExplorerDriver(url);
-		}
-		else{
-			driver=setupDriver.launchChromeDriver(url);
-		}
-		log.info(browserName+" is launched");
-		etest.log(LogStatus.PASS,browserName +" is launched");
-		driver.manage().window().maximize();
-		//driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
-	}
-	@AfterMethod
-	public void tearDown(ITestResult result){
-		driver.close();
-		log.info(browserName+" is closed");
-		if(result.getStatus()==ITestResult.SUCCESS){
-			etest.log(LogStatus.PASS,"pass");
-		}
-		else{
-			etest.log(LogStatus.FAIL, "failed");
-			etest.log(LogStatus.FAIL,etest.addScreenCapture(Helper.SCREEN_SHOT_PATH));
-		}
-		ereport.endTest(etest);
-	}
+//	@BeforeTest
+//	public void initGlobalConstants(){
+//		browserName=properties.getProperty("browserName");
+//		url=properties.getProperty("url");
+//		userName=properties.getProperty("username");
+//		passWord=properties.getProperty("password");
+//		location=properties.getProperty("location");
+//		implicitWait=Integer.parseInt(properties.getProperty("implicitWait"));
+//		log.info(browserName);
+//		log.info(url);
+//		log.info(userName);
+//		log.info(passWord);
+//		log.info(implicitWait);
+//	}
+//	@BeforeMethod
+//	public void setUp(Method m){
+//		etest=ereport.startTest(m.getName());
+//		SetUpDrivers setupDriver=new SetUpDrivers();
+//		if(browserName.equalsIgnoreCase("firefox")){
+//			driver=setupDriver.launchFirefoxDriver(url);
+//		}
+//		else if(browserName.equalsIgnoreCase("ie")){
+//			driver=setupDriver.launchInternetExplorerDriver(url);
+//		}
+//		else{
+//			driver=setupDriver.launchChromeDriver(url);
+//		}
+//		log.info(browserName+" is launched");
+//		etest.log(LogStatus.PASS,browserName +" is launched");
+//		driver.manage().window().maximize();
+//		//driver.manage().deleteAllCookies();
+//		driver.manage().timeouts().implicitlyWait(implicitWait, TimeUnit.SECONDS);
+//	}
+//	@AfterMethod
+//	public void tearDown(ITestResult result){
+//		driver.close();
+//		log.info(browserName+" is closed");
+//		if(result.getStatus()==ITestResult.SUCCESS){
+//			etest.log(LogStatus.PASS,"pass");
+//		}
+//		else{
+//			etest.log(LogStatus.FAIL, "failed");
+//			etest.log(LogStatus.FAIL,etest.addScreenCapture(Helper.SCREEN_SHOT_PATH));
+//		}
+//		ereport.endTest(etest);
+//	}
 	@AfterSuite
 	public void closeFramework(){
 		ereport.flush();

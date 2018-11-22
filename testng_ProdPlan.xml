@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+      <class name="in.licious.dataplanning_API.CreateDemandPlanWithBuffers"/>
+      <class name="in.licious.dataplanning_API.DemandPlanAPI"/>
+      <class name="in.licious.dataplanning_API.ThawingApi"/>
+      <class name="in.licious.dataplanning_API.BriningApi"/>
+      <class name="in.licious.dataplanning_API.LossSale_API"/>
+      <class name="in.licious.dataplanning_API.CreateProductionPlanAPI"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

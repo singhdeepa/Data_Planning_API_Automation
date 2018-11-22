@@ -1,6 +1,9 @@
 package in.licious.dataplanning_API;
 
 import org.testng.annotations.Test;
+
+import in.licious.util.ReadData;
+
 import org.testng.AssertJUnit;
 import org.json.simple.JSONObject;
 import org.testng.Assert;
@@ -15,12 +18,14 @@ public class CreateSystemDP_API {
 	@Test
 	public void createSystemDPTest_TC09()
 	{
+		ReadData rd=new ReadData();
+		String excelFilePath="/Users/deepa/eclipse-workspace/Data_Planning_API_Automation/ExcelData/DataPlanning.xlsx";
 		//RestAssured.baseURI="https://planning-api.licious.in/forecast/services/systemforecast";
 		RequestSpecification request = RestAssured.given();
 		
 		JSONObject requestParams = new JSONObject();
-		requestParams.put("date", "2018-10-10"); 
-		requestParams.put("ck_id", "CK_001");
+		requestParams.put("date", rd.readDataFromExcel(excelFilePath, "Dataplanning", 9, 7)); 
+		requestParams.put("ck_id", rd.readDataFromExcel(excelFilePath, "Dataplanning", 9,18));
 		
 		// Add a header stating the Request body is a JSON
 		request.header("Content-Type", "application/json");
@@ -29,7 +34,7 @@ public class CreateSystemDP_API {
 		
 		request.body(requestParams.toJSONString());
 		
-		Response response = request.post("https://planning-api.licious.in/production/services/systemdp/create");
+		Response response = request.post(rd.readDataFromExcel(excelFilePath, "Dataplanning", 9, 2));
 
 		int statusCode = response.getStatusCode();
 		AssertJUnit.assertEquals(statusCode, 200);

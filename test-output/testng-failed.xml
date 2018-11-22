@@ -3,11 +3,16 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="in.licious.dataplanning_API.RM_CK_Ledger">
+      <class name="in.licious.dataplanning_API.Demo">
         <methods>
-          <include name="rm_ck_ledgerTest_TC14"/>
+          <include name="beforeTest"/>
+          <include name="createDemandPlanTest_TC01"/>
+          <include name="updateDemandPlanWithBuffersTest_TC02"/>
+          <include name="generatebriningPlanTest_TC05"/>
+          <include name="generateThawingPlanTest_TC07"/>
+          <include name="productionPlanTest_TC06"/>
         </methods>
-      </class> <!-- in.licious.dataplanning_API.RM_CK_Ledger -->
+      </class> <!-- in.licious.dataplanning_API.Demo -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

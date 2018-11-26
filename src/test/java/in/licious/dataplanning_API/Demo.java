@@ -90,16 +90,17 @@ public class Demo {
 	System.out.println(statusCode);
 	System.out.println(data);
 	System.out.println(data1.asString());	
+	
 	extent.endTest(logger);
 	}
 	 @AfterTest
 		public void aftermethod()
 		{
-		 //extent.endTest(logger);
+		 extent.endTest(logger);
 			extent.flush();
 			extent.close();
 		}
-	 @Test(priority=2)
+	// @Test(priority=2)
 		public void updateDemandPlanWithBuffersTest_TC02()
 		{
 			logger = extent.startTest("Execution Started for Demand Plan With Buffers "); 
@@ -173,8 +174,8 @@ public class Demo {
 			Assert.assertTrue(true); 
 			ReadData rd=new ReadData();
 			String excelFilePath="/Users/deepa/eclipse-workspace/Data_Planning_API_Automation/ExcelData/DataPlanning.xlsx";
-		    String baseprodURLl="https://plan-es1.licious.app/_sql?sql=";
-			
+		   // String baseprodURLl="https://plan-es1.licious.app/_sql?sql=";
+		    String baseprodURLl="http://52.66.9.219:9200/_sql?sql=";
 		RequestSpecification request = RestAssured.given();
 		 double PP=0;
 		 
@@ -244,7 +245,8 @@ public class Demo {
 		String dateCS_2="'"+result2+"'";
 		System.out.println(dateCS_2);
 		
-		String ssDPmaxV="select max(version) from demand-plan where city_id='1' and hub_id in ('1','4','10') and product_id='pr_57235922d122e' and date=";
+		String ssDPmaxV=rd.readDataFromExcel(excelFilePath, "Dataplanning", 6, 31);
+				//"select max(version) from demand-plan where city_id='1' and hub_id in ('1','4','10') and product_id='pr_57235922d122e' and date=";
 		String sURLdpVersion =baseprodURLl+URLEncoder.encode(ssDPmaxV)+dateDPTsam;
 		System.out.println(sURLdpVersion);
 		 URL urldpMaxVer = new URL(sURLdpVersion);
@@ -408,7 +410,72 @@ public class Demo {
 					System.out.println("Production Plan "+0);
 				}
 		  }
-		  extent.endTest(logger);
+		//  extent.endTest(logger);
+		  
+		  String numberAsString = Double.toString(ppT_1);
+		  System.out.println(numberAsString);
+		
+		
+		
+		System.out.println("***********************************************************************************************************");
+		
+		
+				//"/Users/deepa/git/Data_Planning_API_Automation/ExcelData/DataPlanning.xlsx";
+		//RestAssured.baseURI="https://planning-api.licious.in/forecast/services/systemforecast";
+		
+		
+		RequestSpecification request1 = RestAssured.given();
+		
+		 
+		//String baseprodURLl="http://52.66.9.219:9200/_sql?sql=";
+		
+			//requestParams.put("city", "1"); 
+			// Add a header stating the Request body is a JSON
+	
+			JSONObject requestParams1 = new JSONObject();
+			request1.body(requestParams1.toJSONString());
+			
+		requestParams1.put("week",rd.readDataFromExcel(excelFilePath, "Dataplanning", 6, 4) ); 
+		requestParams1.put("year",rd.readDataFromExcel(excelFilePath, "Dataplanning", 6, 5) );
+		requestParams1.put("ck", rd.readDataFromExcel(excelFilePath, "Dataplanning", 6, 18));
+		requestParams1.put("date",rd.readDataFromExcel(excelFilePath, "Dataplanning", 6, 7));
+		requestParams1.put("type",rd.readDataFromExcel(excelFilePath, "Dataplanning", 6, 33));
+		
+		
+		// Add a header stating the Request body is a JSON
+		request1.header("Content-Type", "application/json");
+		// Add a header stating the Request body is a JSON
+		request1.header("token", "e6e061838856bf47e1de730719fb2609");
+		
+		request1.body(requestParams1.toJSONString());
+		
+		Response response1 = request1.post("http://planning-api.licious.in/production/viewplan");
+
+		int statusCode1 = response1.getStatusCode();
+		AssertJUnit.assertEquals(statusCode1, 200);
+
+		System.out.println(response1.getContentType());
+		
+		//System.out.println(response1.getBody().asString());	
+		String dateString1=" "+dateString+" ";
+		String prdFresh=rd.readDataFromExcel(excelFilePath, "Dataplanning", 6, 6);
+				//"pr_5785b9065d7e1";
+		System.out.println(dateString);
+		
+		if(response1.getBody().asString().contains(prdFresh))
+		{
+			if(response1.getBody().asString().contains(result1))
+			{
+			if(response1.getBody().asString().contains(numberAsString))
+			{
+			System.out.println("Production Plan pass for "+prdFresh+" "+result1+" "+numberAsString);
+			}
+			}
+		}else
+		{
+			System.out.println("Fail");
+		}
+		extent.endTest(logger);
 		}
 	 @Test(priority=4)
 		public void generateThawingPlanTest_TC07() throws Throwable
@@ -450,7 +517,7 @@ public class Demo {
 			String dateString=rd.readDataFromExcel(excelFilePath, "Dataplanning", 7, 30);
 			DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-			
+			 System.out.println(dateString);
 			 Date myDate1 = dateFormat.parse(dateString);
 		        Date  oneDayBefore1 = new Date(myDate1.getTime() - 1);
 		        String result1 = dateFormat.format(oneDayBefore1);
@@ -629,7 +696,7 @@ public class Demo {
 		  System.out.println(closingstock+"Closing stock t-3");
 		  double value=dplan2+dplan1;
 		  double value1=0;
-		  
+		  String numberAsString="";
 		  
 		 if(closingstock>value)
 		 {
@@ -640,12 +707,16 @@ public class Demo {
 			 {
 				 tp1=tp;
 				 logger.log(LogStatus.PASS, "Thawing Plan for the Cold Cuts Products in Thawing Plan is ="+tp1);
+				  numberAsString = Double.toString(tp1);
+				 System.out.println(numberAsString);
 				 System.out.println(tp1+" Thawing Plan"); 
 			 }
 			 else
 			 {
 				 tp1=0;
 				 logger.log(LogStatus.PASS, "Thawing Plan for the Cold Cuts Products in Thawing Plan is ="+tp1);
+				  numberAsString = Double.toString(tp1);
+				 System.out.println(numberAsString);
 				 System.out.println(tp1+" Thawing Plan"); 
 			 }
 		 }
@@ -657,16 +728,96 @@ public class Demo {
 			 {
 				// tp1=dplan;
 				 logger.log(LogStatus.PASS, "Thawing Plan for the Cold Cuts Products in Thawing Plan is ="+tp);
+				  numberAsString = Double.toString(tp);
+				 System.out.println(numberAsString);
 				 System.out.println(tp+" Thawing Plan"); 
 			 }
 			 else
 			 {
 				 tp1=0;
 				 logger.log(LogStatus.PASS, "Thawing Plan for the Cold Cuts Products in Thawing Plan is ="+tp1);
+				  numberAsString = Double.toString(tp1);
+				 System.out.println(numberAsString);
 				 System.out.println(tp1+" Thawing Plan");
 			 }
 			 //System.out.println(tp1+" Thawing Plan");
 		 }
+		 
+		
+		
+		
+		System.out.println("***********************************************************************************************************");
+		
+		
+				//"/Users/deepa/git/Data_Planning_API_Automation/ExcelData/DataPlanning.xlsx";
+		//RestAssured.baseURI="https://planning-api.licious.in/forecast/services/systemforecast";
+		
+		
+		RequestSpecification request1 = RestAssured.given();
+		
+		 
+		//String baseprodURLl="http://52.66.9.219:9200/_sql?sql=";
+		
+			//requestParams.put("city", "1"); 
+			// Add a header stating the Request body is a JSON
+	
+			JSONObject requestParams1 = new JSONObject();
+			request1.body(requestParams1.toJSONString());
+			
+			requestParams1.put("week",rd.readDataFromExcel(excelFilePath, "Dataplanning", 7, 4) ); 
+			requestParams1.put("year",rd.readDataFromExcel(excelFilePath, "Dataplanning", 7, 5) );
+			requestParams1.put("ck", rd.readDataFromExcel(excelFilePath, "Dataplanning", 7, 18));
+			requestParams1.put("date",rd.readDataFromExcel(excelFilePath, "Dataplanning", 7, 7));
+			requestParams1.put("type",rd.readDataFromExcel(excelFilePath, "Dataplanning", 7, 33));
+		
+		
+		
+		// Add a header stating the Request body is a JSON
+		request1.header("Content-Type", "application/json");
+		// Add a header stating the Request body is a JSON
+		request1.header("token", "e6e061838856bf47e1de730719fb2609");
+		
+		request1.body(requestParams1.toJSONString());
+		
+		Response response1 = request1.post("http://planning-api.licious.in/production/viewplan");
+
+		int statusCode1 = response1.getStatusCode();
+		AssertJUnit.assertEquals(statusCode1, 200);
+
+		System.out.println(response1.getContentType());
+		
+		//System.out.println(response1.getBody().asString());	
+		//String dateString1=" "+dateString+" ";
+		String prdColdCuts=rd.readDataFromExcel(excelFilePath, "Dataplanning", 7, 6);
+				//"pr_57235b81a66f9";
+		System.out.println(dateString);
+		
+		if(response1.getBody().asString().contains(prdColdCuts))
+		{
+			
+		
+			if(response1.getBody().asString().contains(result2))
+			{
+				
+			if(response1.getBody().asString().contains(numberAsString))
+			{
+				System.out.println("Thaing Plan pass for "+prdColdCuts+" "+result2+" "+numberAsString);
+			}else			
+			{
+				System.out.println("Fail");
+			}
+		}else
+		{
+			System.out.println("Fail");
+		}
+		}else
+		{
+			System.out.println("Fail");
+		}
+		
+		 
+		 
+ 
 		 extent.endTest(logger);
 		}
 	 @Test(priority=5)
@@ -1029,6 +1180,82 @@ public class Demo {
 				  }
 				  }
 			 }
+				 String numberAsString = Double.toString(b_pt_2);
+				  System.out.println(numberAsString);
+			 
+			 System.out.println("***********************************************************************************************************");
+				
+				
+				//"/Users/deepa/git/Data_Planning_API_Automation/ExcelData/DataPlanning.xlsx";
+		//RestAssured.baseURI="https://planning-api.licious.in/forecast/services/systemforecast";
+		
+		
+		RequestSpecification request1 = RestAssured.given();
+		
+		 
+		//String baseprodURLl="http://52.66.9.219:9200/_sql?sql=";
+		
+			//requestParams.put("city", "1"); 
+			// Add a header stating the Request body is a JSON
+	
+			JSONObject requestParams1 = new JSONObject();
+			request1.body(requestParams1.toJSONString());
+			
+			requestParams1.put("week",rd.readDataFromExcel(excelFilePath, "Dataplanning", 5, 4) ); 
+			requestParams1.put("year",rd.readDataFromExcel(excelFilePath, "Dataplanning", 5, 5) );
+			requestParams1.put("ck", rd.readDataFromExcel(excelFilePath, "Dataplanning", 5, 18));
+			requestParams1.put("date",rd.readDataFromExcel(excelFilePath, "Dataplanning", 5, 7));
+			requestParams1.put("type",rd.readDataFromExcel(excelFilePath, "Dataplanning", 5, 33));
+		
+		
+		// Add a header stating the Request body is a JSON
+		request1.header("Content-Type", "application/json");
+		// Add a header stating the Request body is a JSON
+		request1.header("token", "e6e061838856bf47e1de730719fb2609");
+		
+		request1.body(requestParams1.toJSONString());
+		
+		Response response1 = request1.post("http://planning-api.licious.in/production/viewplan");
+
+		int statusCode1 = response1.getStatusCode();
+		AssertJUnit.assertEquals(statusCode1, 200);
+
+		System.out.println(response1.getContentType());
+		
+		//System.out.println(response1.getBody().asString());	
+		//String dateString1=" "+dateString+" ";
+		String prdMarinades=rd.readDataFromExcel(excelFilePath, "Dataplanning", 5, 6);
+				//"pr_57235922d122e";
+		
+		System.out.println(dateString);
+		
+		if(response1.getBody().asString().contains(prdMarinades))
+		{
+			
+		
+			if(response1.getBody().asString().contains(result2))
+			{
+				
+			if(response1.getBody().asString().contains(numberAsString))
+			{
+				System.out.println("Brining Plan pass for "+prdMarinades+" "+result2+" "+numberAsString);
+			}else			
+			{
+				System.out.println("Fail");
+			}
+		}else
+		{
+			System.out.println("Fail");
+		}
+		}else
+		{
+			System.out.println("Fail");
+		}
+		
+		 
+			 
 			 extent.endTest(logger);
 		}
+
+
 }

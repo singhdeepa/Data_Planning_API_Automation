@@ -1,41 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="25966" started-at="2018-11-22T07:15:25Z" finished-at="2018-11-22T07:15:51Z">
+  <suite name="Default suite" duration-ms="59133" started-at="2018-11-26T12:17:07Z" finished-at="2018-11-26T12:18:06Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="25966" started-at="2018-11-22T07:15:25Z" finished-at="2018-11-22T07:15:51Z">
-      <class name="in.licious.dataplanning_API.Demo">
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:in.licious.dataplanning_API.Demo@617faa95]" name="beforeTest" is-config="true" duration-ms="240" started-at="2018-11-22T12:45:25Z" finished-at="2018-11-22T12:45:25Z">
+    <test name="Default test" duration-ms="59133" started-at="2018-11-26T12:17:07Z" finished-at="2018-11-26T12:18:06Z">
+      <class name="in.licious.dataplanning_API.SystemForecastAPI">
+        <test-method status="PASS" signature="beforeTest()[pri:0, instance:in.licious.dataplanning_API.SystemForecastAPI@1a451d4d]" name="beforeTest" is-config="true" duration-ms="277" started-at="2018-11-26T17:47:07Z" finished-at="2018-11-26T17:47:07Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="createDemandPlanTest_TC01()[pri:1, instance:in.licious.dataplanning_API.Demo@617faa95]" name="createDemandPlanTest_TC01" duration-ms="9230" started-at="2018-11-22T12:45:25Z" finished-at="2018-11-22T12:45:34Z">
+        <test-method status="PASS" signature="createSystemForecastTest_TC03()[pri:0, instance:in.licious.dataplanning_API.SystemForecastAPI@1a451d4d]" name="createSystemForecastTest_TC03" duration-ms="58286" started-at="2018-11-26T17:47:07Z" finished-at="2018-11-26T17:48:05Z">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createDemandPlanTest_TC01 -->
-        <test-method status="PASS" signature="updateDemandPlanWithBuffersTest_TC02()[pri:2, instance:in.licious.dataplanning_API.Demo@617faa95]" name="updateDemandPlanWithBuffersTest_TC02" duration-ms="2676" started-at="2018-11-22T12:45:34Z" finished-at="2018-11-22T12:45:37Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- updateDemandPlanWithBuffersTest_TC02 -->
-        <test-method status="PASS" signature="productionPlanTest_TC06()[pri:3, instance:in.licious.dataplanning_API.Demo@617faa95]" name="productionPlanTest_TC06" duration-ms="5660" started-at="2018-11-22T12:45:37Z" finished-at="2018-11-22T12:45:43Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- productionPlanTest_TC06 -->
-        <test-method status="PASS" signature="generateThawingPlanTest_TC07()[pri:4, instance:in.licious.dataplanning_API.Demo@617faa95]" name="generateThawingPlanTest_TC07" duration-ms="1994" started-at="2018-11-22T12:45:43Z" finished-at="2018-11-22T12:45:45Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- generateThawingPlanTest_TC07 -->
-        <test-method status="PASS" signature="generatebriningPlanTest_TC05()[pri:5, instance:in.licious.dataplanning_API.Demo@617faa95]" name="generatebriningPlanTest_TC05" duration-ms="5728" started-at="2018-11-22T12:45:45Z" finished-at="2018-11-22T12:45:50Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- generatebriningPlanTest_TC05 -->
-        <test-method status="PASS" signature="aftermethod()[pri:0, instance:in.licious.dataplanning_API.Demo@617faa95]" name="aftermethod" is-config="true" duration-ms="403" started-at="2018-11-22T12:45:50Z" finished-at="2018-11-22T12:45:51Z">
+        </test-method> <!-- createSystemForecastTest_TC03 -->
+        <test-method status="PASS" signature="aftermethod()[pri:0, instance:in.licious.dataplanning_API.SystemForecastAPI@1a451d4d]" name="aftermethod" is-config="true" duration-ms="538" started-at="2018-11-26T17:48:05Z" finished-at="2018-11-26T17:48:06Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- aftermethod -->
-      </class> <!-- in.licious.dataplanning_API.Demo -->
+      </class> <!-- in.licious.dataplanning_API.SystemForecastAPI -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

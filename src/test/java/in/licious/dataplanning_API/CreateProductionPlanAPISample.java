@@ -72,7 +72,8 @@ public class CreateProductionPlanAPISample {
 		Assert.assertTrue(true); 
 		ReadData rd=new ReadData();
 		String excelFilePath="/Users/deepa/eclipse-workspace/Data_Planning_API_Automation/ExcelData/DataPlanning.xlsx";
-	    String baseprodURLl="https://plan-es1.licious.app/_sql?sql=";
+		String baseprodURLl="http://52.66.9.219:9200/_sql?sql=";
+	    //String baseprodURLl="https://plan-es1.licious.app/_sql?sql=";
 		
 	RequestSpecification request = RestAssured.given();
 	 double PP=0;
@@ -143,7 +144,8 @@ public class CreateProductionPlanAPISample {
 	String dateCS_2="'"+result2+"'";
 	System.out.println(dateCS_2);
 	
-	String ssDPmaxV="select max(version) from demand-plan where city_id='1' and hub_id in ('1','4','10') and product_id='pr_57235922d122e' and date=";
+	String ssDPmaxV=rd.readDataFromExcel(excelFilePath, "Dataplanning", 6, 31);
+			//"select max(version) from demand-plan where city_id='1' and hub_id in ('1','4','10') and product_id='pr_5785b9065d7e1' and date=";
 	String sURLdpVersion =baseprodURLl+URLEncoder.encode(ssDPmaxV)+dateDPTsam;
 	System.out.println(sURLdpVersion);
 	 URL urldpMaxVer = new URL(sURLdpVersion);

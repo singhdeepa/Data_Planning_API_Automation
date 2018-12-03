@@ -85,7 +85,7 @@ ResponseBody data1 = response.getBody();
 
 System.out.println(statusCode);
 System.out.println(data);
-System.out.println(data1.asString());	
+System.out.println(response.getBody().asString());	
 extent.endTest(logger);
 }
  @AfterTest

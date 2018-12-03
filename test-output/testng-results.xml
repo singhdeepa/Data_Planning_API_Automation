@@ -1,41 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="5" passed="5">
+<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="25966" started-at="2018-11-22T07:15:25Z" finished-at="2018-11-22T07:15:51Z">
+  <suite name="Default suite" duration-ms="26455" started-at="2018-12-03T06:01:06Z" finished-at="2018-12-03T06:01:33Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="25966" started-at="2018-11-22T07:15:25Z" finished-at="2018-11-22T07:15:51Z">
-      <class name="in.licious.dataplanning_API.Demo">
-        <test-method status="PASS" signature="beforeTest()[pri:0, instance:in.licious.dataplanning_API.Demo@617faa95]" name="beforeTest" is-config="true" duration-ms="240" started-at="2018-11-22T12:45:25Z" finished-at="2018-11-22T12:45:25Z">
+    <test name="Default test" duration-ms="26455" started-at="2018-12-03T06:01:06Z" finished-at="2018-12-03T06:01:33Z">
+      <class name="in.licious.dataplanning_API.DispatchPlan">
+        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="9306" started-at="2018-12-03T11:31:06Z" data-provider="getData" finished-at="2018-12-03T11:31:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[1]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[4]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[10]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[B_C2]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- beforeTest -->
-        <test-method status="PASS" signature="createDemandPlanTest_TC01()[pri:1, instance:in.licious.dataplanning_API.Demo@617faa95]" name="createDemandPlanTest_TC01" duration-ms="9230" started-at="2018-11-22T12:45:25Z" finished-at="2018-11-22T12:45:34Z">
+        </test-method> <!-- createDispatchPlanBangalore -->
+        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="6016" started-at="2018-12-03T11:31:16Z" data-provider="getData" finished-at="2018-12-03T11:31:22Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[3]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[5]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[15]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[B_C4]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- createDemandPlanTest_TC01 -->
-        <test-method status="PASS" signature="updateDemandPlanWithBuffersTest_TC02()[pri:2, instance:in.licious.dataplanning_API.Demo@617faa95]" name="updateDemandPlanWithBuffersTest_TC02" duration-ms="2676" started-at="2018-11-22T12:45:34Z" finished-at="2018-11-22T12:45:37Z">
+        </test-method> <!-- createDispatchPlanBangalore -->
+        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="5394" started-at="2018-12-03T11:31:22Z" data-provider="getData" finished-at="2018-12-03T11:31:27Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[2]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[7]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[12]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[B_C1]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- updateDemandPlanWithBuffersTest_TC02 -->
-        <test-method status="PASS" signature="productionPlanTest_TC06()[pri:3, instance:in.licious.dataplanning_API.Demo@617faa95]" name="productionPlanTest_TC06" duration-ms="5660" started-at="2018-11-22T12:45:37Z" finished-at="2018-11-22T12:45:43Z">
+        </test-method> <!-- createDispatchPlanBangalore -->
+        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="5685" started-at="2018-12-03T11:31:27Z" data-provider="getData" finished-at="2018-12-03T11:31:33Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[6]]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[8]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[46]]>
+              </value>
+            </param>
+            <param index="3">
+              <value>
+                <![CDATA[B_C3]]>
+              </value>
+            </param>
+          </params>
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- productionPlanTest_TC06 -->
-        <test-method status="PASS" signature="generateThawingPlanTest_TC07()[pri:4, instance:in.licious.dataplanning_API.Demo@617faa95]" name="generateThawingPlanTest_TC07" duration-ms="1994" started-at="2018-11-22T12:45:43Z" finished-at="2018-11-22T12:45:45Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- generateThawingPlanTest_TC07 -->
-        <test-method status="PASS" signature="generatebriningPlanTest_TC05()[pri:5, instance:in.licious.dataplanning_API.Demo@617faa95]" name="generatebriningPlanTest_TC05" duration-ms="5728" started-at="2018-11-22T12:45:45Z" finished-at="2018-11-22T12:45:50Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- generatebriningPlanTest_TC05 -->
-        <test-method status="PASS" signature="aftermethod()[pri:0, instance:in.licious.dataplanning_API.Demo@617faa95]" name="aftermethod" is-config="true" duration-ms="403" started-at="2018-11-22T12:45:50Z" finished-at="2018-11-22T12:45:51Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- aftermethod -->
-      </class> <!-- in.licious.dataplanning_API.Demo -->
+        </test-method> <!-- createDispatchPlanBangalore -->
+      </class> <!-- in.licious.dataplanning_API.DispatchPlan -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

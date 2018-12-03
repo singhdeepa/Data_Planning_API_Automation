@@ -116,8 +116,6 @@ public class SystemForecastAPI  {
         System.out.println("*****************************");
         
         
-        
-        
          Calendar cal = Calendar.getInstance();
          cal.setTime(date);
          Date todate = cal.getTime(); 

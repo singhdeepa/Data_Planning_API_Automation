@@ -3,13 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test name="Default test(failed)">
     <classes>
-      <class name="in.licious.dataplanning_API.SystemForecastAPI">
+      <class name="in.licious.dataplanning_API.DispatchPlan">
         <methods>
-          <include name="aftermethod"/>
-          <include name="beforeTest"/>
-          <include name="createSystemForecastTest_TC03"/>
+          <include name="createDispatchPlanBangalore" invocation-numbers="0 1 2 3"/>
         </methods>
-      </class> <!-- in.licious.dataplanning_API.SystemForecastAPI -->
+      </class> <!-- in.licious.dataplanning_API.DispatchPlan -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

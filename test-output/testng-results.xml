@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+<testng-results skipped="0" failed="0" ignored="0" total="6" passed="6">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="26455" started-at="2018-12-03T06:01:06Z" finished-at="2018-12-03T06:01:33Z">
+  <suite name="Default suite" duration-ms="34420" started-at="2018-12-03T10:36:55Z" finished-at="2018-12-03T10:37:30Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="26455" started-at="2018-12-03T06:01:06Z" finished-at="2018-12-03T06:01:33Z">
+    <test name="Default test" duration-ms="34420" started-at="2018-12-03T10:36:55Z" finished-at="2018-12-03T10:37:30Z">
       <class name="in.licious.dataplanning_API.DispatchPlan">
-        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="9306" started-at="2018-12-03T11:31:06Z" data-provider="getData" finished-at="2018-12-03T11:31:16Z">
+        <test-method status="PASS" signature="schedule_order_HYDRABAD()[pri:1, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="schedule_order_HYDRABAD" duration-ms="1789" started-at="2018-12-03T16:06:55Z" finished-at="2018-12-03T16:06:57Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- schedule_order_HYDRABAD -->
+        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="9233" started-at="2018-12-03T16:06:57Z" data-provider="getData" finished-at="2018-12-03T16:07:06Z">
           <params>
             <param index="0">
               <value>
@@ -33,7 +37,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createDispatchPlanBangalore -->
-        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="6016" started-at="2018-12-03T11:31:16Z" data-provider="getData" finished-at="2018-12-03T11:31:22Z">
+        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="4768" started-at="2018-12-03T16:07:06Z" data-provider="getData" finished-at="2018-12-03T16:07:11Z">
           <params>
             <param index="0">
               <value>
@@ -59,7 +63,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createDispatchPlanBangalore -->
-        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="5394" started-at="2018-12-03T11:31:22Z" data-provider="getData" finished-at="2018-12-03T11:31:27Z">
+        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="14279" started-at="2018-12-03T16:07:11Z" data-provider="getData" finished-at="2018-12-03T16:07:25Z">
           <params>
             <param index="0">
               <value>
@@ -85,7 +89,7 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createDispatchPlanBangalore -->
-        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="5685" started-at="2018-12-03T11:31:27Z" data-provider="getData" finished-at="2018-12-03T11:31:33Z">
+        <test-method status="PASS" signature="createDispatchPlanBangalore(java.lang.String, java.lang.String, java.lang.String, java.lang.String)[pri:2, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="createDispatchPlanBangalore" duration-ms="4195" started-at="2018-12-03T16:07:25Z" data-provider="getData" finished-at="2018-12-03T16:07:30Z">
           <params>
             <param index="0">
               <value>
@@ -111,6 +115,10 @@
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createDispatchPlanBangalore -->
+        <test-method status="PASS" signature="scheduleOrder()[pri:3, instance:in.licious.dataplanning_API.DispatchPlan@64bf3bbf]" name="scheduleOrder" duration-ms="120" started-at="2018-12-03T16:07:30Z" finished-at="2018-12-03T16:07:30Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- scheduleOrder -->
       </class> <!-- in.licious.dataplanning_API.DispatchPlan -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->

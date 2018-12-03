@@ -65,7 +65,7 @@ public class DispatchPlan {
     double  ScheduleOrder_hub1B= 0;
     double  ScheduleOrder_hub2B= 0;
     double ScheduleOrder_Bangalore=0;
-    String rootobjScheduleOrder_hubH="";
+  //  String rootobjScheduleOrder_hubH="";
     double  ScheduleOrder_hubHyd = 0;
     double dispatchQtyBang=0;
     double dispatchQtyHyd=0;
@@ -87,7 +87,7 @@ public class DispatchPlan {
     double dplan_hub_24=  0;
     double dplan_hub_25=  0;
     String baseprodURLl="http://52.66.9.219:9200/_sql?sql=";
-	@Test(dataProvider="getData")
+	@Test(dataProvider="getData",priority=2)
 //	public void createDispatchPlanBangalore(String hubid, String hubid1,String hubid2,String cluster_ID) throws Throwable
 //	{
     public void createDispatchPlanBangalore(String hubid, String hubid1,String hubid2,String cluster_ID) throws Throwable
@@ -695,7 +695,7 @@ public class DispatchPlan {
 						   // disp_Plan_HubH+=disp_Plan_HubH;
 						   // System.out.println(disp_Plan_HubH+" Total Hydrabad disp Plan");
 		       }  
-		       System.out.println("hydrabad");        
+		               System.out.println("hydrabad");        
 		             
 					     totalProductionPlan=productionPlan_Cluster_B_C1+productionPlan_Cluster_B_C2+productionPlan_Cluster_B_C3+productionPlan_Cluster_B_C4+productionPlan_Cluster1+productionPlan_Cluster2;
 					    System.out.println(totalProductionPlan+"Total Production Plan");
@@ -704,7 +704,10 @@ public class DispatchPlan {
 					     dispatchPlanBng=disp_Plan_B_C4+disp_Plan_B_C1+disp_Plan_B_C2+disp_Plan_B_C3;
 					    System.out.println(dispatchPlanBng+"dispatchPlanBng");
 					     totalDispatchPlan=disp_Plan_HubH+dispatchPlanBng;
-					    System.out.println(totalDispatchPlan+"Total Dispatch Plan");
+					    System.out.println(totalDispatchPlan+"Total Dispatch Plan"+totalProductionPlan);
+					    
+					    
+					    
 					    
 			    RequestSpecification request1 = RestAssured.given();
 				
@@ -737,7 +740,7 @@ public class DispatchPlan {
 			       String sURLScheduleOrder_hubH =baseprodURLl+URLEncoder.encode(ssScheduleOrder_hub)+"'"+hubIDH+"'"+"and%20sheduled="+dateDPTsam+"%20and%20created_at<>%20"+dateDPTsam;
 			       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP)+dateDPT+"and version="+version; 
 			       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP);
-			      // System.out.println(sURLScheduleOrder_hub);
+			       System.out.println(sURLScheduleOrder_hub);
 			       
 			       URL urlScheduleOrder_hub = new URL(sURLScheduleOrder_hub);
 				    URLConnection requestScheduleOrder_hub = urlScheduleOrder_hub.openConnection();
@@ -754,7 +757,7 @@ public class DispatchPlan {
 		            
 				       URL urlScheduleOrder_hub1 = new URL(sURLScheduleOrder_hub1);
 					    URLConnection requestScheduleOrder_hub1 = urlScheduleOrder_hub1.openConnection();
-					    requestScheduleOrder_hub.connect();
+					    requestScheduleOrder_hub1.connect();
 
 					    // Convert to a JSON object to print data
 					    JsonParser jpScheduleOrder_hub1 = new JsonParser(); //from gson
@@ -777,31 +780,32 @@ public class DispatchPlan {
 					      ScheduleOrder_hub1B=    Double.parseDouble(rootobjScheduleOrder_hub1);
 					      ScheduleOrder_hub2B=    Double.parseDouble(rootobjScheduleOrder_hub2);
 					   // System.out.println(ScheduleOrder_hubB+ScheduleOrder_hub1B+ScheduleOrder_hub2B);
-					    ScheduleOrder_Bangalore=ScheduleOrder_hubB+ScheduleOrder_hub1B+ScheduleOrder_hub2B;
+					    ScheduleOrder_Bangalore+=ScheduleOrder_hubB+ScheduleOrder_hub1B+ScheduleOrder_hub2B;
 					   System.out.println(ScheduleOrder_Bangalore+"Bangalore schedule order");
-					    String rootobjScheduleOrder_hubH="";
-					    double  ScheduleOrder_hubHyd = 0;
-					    for (int i = 0; i < array.length; i++)
-					       {
-					    	hubIDH=  Integer.parseInt(array[i]);
-					    	   sURLScheduleOrder_hubH =baseprodURLl+URLEncoder.encode(ssScheduleOrder_hub)+"'"+hubIDH+"'"+"and%20sheduled="+dateDPTsam+"%20and%20created_at<>%20"+dateDPTsam;
-					    	 URL urlScheduleOrder_hubH = new URL(sURLScheduleOrder_hubH);
-							    URLConnection requestScheduleOrder_hubH = urlScheduleOrder_hubH.openConnection();
-							    requestScheduleOrder_hubH.connect();
-
-							    // Convert to a JSON object to print data
-							    JsonParser jpScheduleOrder_hubH = new JsonParser(); //from gson
-							    JsonElement rootScheduleOrder_hubH = jpScheduleOrder_hubH.parse(new InputStreamReader((InputStream) requestScheduleOrder_hubH.getContent())); //Convert the input stream to a json element
-							     rootobjScheduleOrder_hubH= rootScheduleOrder_hubH.getAsJsonObject().get("aggregations").getAsJsonObject().get("SUM(order_item_quantity)").getAsJsonObject().get("value").getAsString();
-							     ScheduleOrder_hubHyd +=    Double.parseDouble(rootobjScheduleOrder_hubH);
-							    //System.out.println(rootobjScheduleOrder_hub+"Schedule order Hub Level "+hubid);
-							    //May be an array, may be an object. 
-							   // System.out.println(rootobjScheduleOrder_hubH+"Schedule order Hub Level "+hubIDH);
-							     System.out.println(rootobjScheduleOrder_hubH+"Schedule order Hub Level hydrabad "+hubIDH);    
-					       }
+//					   String rootobjScheduleOrder_hubH="";
+//					    double  ScheduleOrder_hubHyd = 0;
+//					    for (int i = 0; i < array.length; i++)
+//					       {
+//					    	hubIDH=  Integer.parseInt(array[i]);
+//					    	   sURLScheduleOrder_hubH =baseprodURLl+URLEncoder.encode(ssScheduleOrder_hub)+"'"+hubIDH+"'"+"and%20sheduled="+dateDPTsam+"%20and%20created_at<>%20"+dateDPTsam;
+//					    	 URL urlScheduleOrder_hubH = new URL(sURLScheduleOrder_hubH);
+//							    URLConnection requestScheduleOrder_hubH = urlScheduleOrder_hubH.openConnection();
+//							    requestScheduleOrder_hubH.connect();
+//
+//							    // Convert to a JSON object to print data
+//							    JsonParser jpScheduleOrder_hubH = new JsonParser(); //from gson
+//							    JsonElement rootScheduleOrder_hubH = jpScheduleOrder_hubH.parse(new InputStreamReader((InputStream) requestScheduleOrder_hubH.getContent())); //Convert the input stream to a json element
+//							     rootobjScheduleOrder_hubH= rootScheduleOrder_hubH.getAsJsonObject().get("aggregations").getAsJsonObject().get("SUM(order_item_quantity)").getAsJsonObject().get("value").getAsString();
+//							     ScheduleOrder_hubHyd +=    Double.parseDouble(rootobjScheduleOrder_hubH);
+//							    //System.out.println(rootobjScheduleOrder_hub+"Schedule order Hub Level "+hubid);
+//							    //May be an array, may be an object. 
+//							   // System.out.println(rootobjScheduleOrder_hubH+"Schedule order Hub Level "+hubIDH);
+//							     System.out.println(ScheduleOrder_hubHyd+"Schedule order Hub Level hydrabad "+hubIDH);    
+//					       }
 					    //System.out.println(ScheduleOrder_hubHyd); 
-					  ScheduleOrder+=ScheduleOrder_hubHyd+ScheduleOrder_Bangalore;
-					    System.out.println(ScheduleOrder+"Total");
+					//  double ScheduleOrder_hubHyd=   schedule_order_HYDRABAD();
+					   // ScheduleOrder+=ScheduleOrder_hubHyd+ScheduleOrder_Bangalore;
+					   // System.out.println(ScheduleOrder+"Total schedule order");
 //				
 //					    requestParams1.put("ck", "CK_001"); 
 //						requestParams1.put("actual", totalProductionPlan-100); 
@@ -848,53 +852,148 @@ public class DispatchPlan {
 //					  ScheduleOrder+=ScheduleOrder_hubHyd+ScheduleOrder_Bangalore;
 //					    System.out.println(ScheduleOrder+"Total ScheduleOrder for less than production Plan");
 //					    					    
-						String ssDispatchPlanHYD=rd.readDataFromExcel(excelFilePath, "Dataplanning", 8, 42);
-					    String sURLDispatchPlanHyd =baseprodURLl+URLEncoder.encode(ssDispatchPlanHYD)+dateDPTsam;
-					       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP)+dateDPT+"and version="+version; 
-					       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP);
-					      // System.out.println(sURLScheduleOrder_hub);
-					       
-					       URL urlDispPlanHyd = new URL(sURLDispatchPlanHyd);
-						    URLConnection requestDispatchPlanHyd = urlDispPlanHyd.openConnection();
-						    requestDispatchPlanHyd.connect();
-
-						    // Convert to a JSON object to print data
-						    JsonParser jpDispatchPlanHyd = new JsonParser(); //from gson
-						    JsonElement rooturlDispPlanHyd = jpDispatchPlanHyd.parse(new InputStreamReader((InputStream) requestDispatchPlanHyd.getContent())); //Convert the input stream to a json element
-						    String rootobjurlDispPlanHyd= rooturlDispPlanHyd.getAsJsonObject().get("aggregations").getAsJsonObject().get("SUM(dispatch_plan_qty)").getAsJsonObject().get("value").getAsString();
-						    dispatchQtyHyd=Double.parseDouble(rootobjurlDispPlanHyd);
-						    //May be an array, may be an object. 
-						    System.out.println(rootobjurlDispPlanHyd+"Dispatch Plan for Hydrabad");	
-						
-						    String ssDispatchPlanBANG=rd.readDataFromExcel(excelFilePath, "Dataplanning", 8, 43);
-						    String sURLDispatchPlanBANG =baseprodURLl+URLEncoder.encode(ssDispatchPlanBANG)+dateDPTsam;
-						       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP)+dateDPT+"and version="+version; 
-						       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP);
-						      // System.out.println(sURLScheduleOrder_hub);
-						       
-						       URL urlDispPlanBANG = new URL(sURLDispatchPlanBANG);
-							    URLConnection requestDispatchPlanBANG = urlDispPlanBANG.openConnection();
-							    requestDispatchPlanBANG.connect();
-
-							    // Convert to a JSON object to print data
-							    JsonParser jpDispatchPlanBANG = new JsonParser(); //from gson
-							    JsonElement rooturlDispPlanBANG = jpDispatchPlanBANG.parse(new InputStreamReader((InputStream) requestDispatchPlanBANG.getContent())); //Convert the input stream to a json element
-							    String rootobjurlDispPlanBANG= rooturlDispPlanBANG.getAsJsonObject().get("aggregations").getAsJsonObject().get("SUM(dispatch_plan_qty)").getAsJsonObject().get("value").getAsString();
-							    
-							    //May be an array, may be an object. 
-							    System.out.println(rootobjurlDispPlanBANG+"Dispatch Plan for BANGALORE");	
-							    
-							 dispatchQtyBang=Double.parseDouble(rootobjurlDispPlanBANG);
-							     
-							 double  dispatchQtyBang95=(95*dispatchQtyBang)/100;
-							 System.out.println(dispatchQtyBang95+"95 % of Dispatch qty for bangalore ");
-							 double dispatch=dispatchQtyBang95+dispatchQtyHyd+ScheduleOrder;
-							 System.out.println(dispatch+" Total dispatch equal to Production Plan");
+//						String ssDispatchPlanHYD=rd.readDataFromExcel(excelFilePath, "Dataplanning", 8, 42);
+//					    String sURLDispatchPlanHyd =baseprodURLl+URLEncoder.encode(ssDispatchPlanHYD)+dateDPTsam;
+//					       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP)+dateDPT+"and version="+version; 
+//					       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP);
+//					      // System.out.println(sURLScheduleOrder_hub);
+//					       
+//					       URL urlDispPlanHyd = new URL(sURLDispatchPlanHyd);
+//						    URLConnection requestDispatchPlanHyd = urlDispPlanHyd.openConnection();
+//						    requestDispatchPlanHyd.connect();
+//
+//						    // Convert to a JSON object to print data
+//						    JsonParser jpDispatchPlanHyd = new JsonParser(); //from gson
+//						    JsonElement rooturlDispPlanHyd = jpDispatchPlanHyd.parse(new InputStreamReader((InputStream) requestDispatchPlanHyd.getContent())); //Convert the input stream to a json element
+//						    String rootobjurlDispPlanHyd= rooturlDispPlanHyd.getAsJsonObject().get("aggregations").getAsJsonObject().get("SUM(dispatch_plan_qty)").getAsJsonObject().get("value").getAsString();
+//						    dispatchQtyHyd=Double.parseDouble(rootobjurlDispPlanHyd);
+//						    //May be an array, may be an object. 
+//						    System.out.println(rootobjurlDispPlanHyd+"Dispatch Plan for Hydrabad");	
+//						
+//						    String ssDispatchPlanBANG=rd.readDataFromExcel(excelFilePath, "Dataplanning", 8, 43);
+//						    String sURLDispatchPlanBANG =baseprodURLl+URLEncoder.encode(ssDispatchPlanBANG)+dateDPTsam;
+//						       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP)+dateDPT+"and version="+version; 
+//						       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP);
+//						      // System.out.println(sURLScheduleOrder_hub);
+//						       
+//						       URL urlDispPlanBANG = new URL(sURLDispatchPlanBANG);
+//							    URLConnection requestDispatchPlanBANG = urlDispPlanBANG.openConnection();
+//							    requestDispatchPlanBANG.connect();
+//
+//							    // Convert to a JSON object to print data
+//							    JsonParser jpDispatchPlanBANG = new JsonParser(); //from gson
+//							    JsonElement rooturlDispPlanBANG = jpDispatchPlanBANG.parse(new InputStreamReader((InputStream) requestDispatchPlanBANG.getContent())); //Convert the input stream to a json element
+//							    String rootobjurlDispPlanBANG= rooturlDispPlanBANG.getAsJsonObject().get("aggregations").getAsJsonObject().get("SUM(dispatch_plan_qty)").getAsJsonObject().get("value").getAsString();
+//							    
+//							    //May be an array, may be an object. 
+//							    System.out.println(rootobjurlDispPlanBANG+"Dispatch Plan for BANGALORE");	
+//							    
+//							 dispatchQtyBang=Double.parseDouble(rootobjurlDispPlanBANG);
+//							     
+//							 double  dispatchQtyBang95=(95*dispatchQtyBang)/100;
+//							 System.out.println(dispatchQtyBang95+"95 % of Dispatch qty for bangalore ");
+//							 double dispatch=dispatchQtyBang95+dispatchQtyHyd+ScheduleOrder;
+//							 System.out.println(dispatch+" Total dispatch equal to Production Plan "+totalProductionPlan);
 					   
 							 
 	}
-	
-	
+	@Test(priority=1)
+	public  void schedule_order_HYDRABAD() throws Throwable
+	{
+		
+		//String rootobjScheduleOrder_hubH="";
+	 //   double  ScheduleOrder_hubHyd = 0;
+
+	       String sURLdpH =" ";
+	       String ssDPH=rd.readDataFromExcel(excelFilePath, "Dataplanning", 9, 14);
+	       String array[]= {"17","49","50","16","18","24","25"};
+	       String cluster1="H_C1";
+	        String cluster2="H_C2";
+	    String ssScheduleOrder_hub=rd.readDataFromExcel(excelFilePath, "Dataplanning", 8, 40);
+        String dateString=rd.readDataFromExcel(excelFilePath, "Dataplanning", 8, 30);
+		
+		String dateDPTsam="'"+dateString+"'";
+	    for (int i = 0; i < array.length; i++)
+	       {
+	    	hubIDH=  Integer.parseInt(array[i]);
+	    	   sURLScheduleOrder_hubH =baseprodURLl+URLEncoder.encode(ssScheduleOrder_hub)+"'"+hubIDH+"'"+"and%20sheduled="+dateDPTsam+"%20and%20created_at<>%20"+dateDPTsam;
+	    	 URL urlScheduleOrder_hubH = new URL(sURLScheduleOrder_hubH);
+			    URLConnection requestScheduleOrder_hubH = urlScheduleOrder_hubH.openConnection();
+			    requestScheduleOrder_hubH.connect();
+
+			    // Convert to a JSON object to print data
+			    JsonParser jpScheduleOrder_hubH = new JsonParser(); //from gson
+			    JsonElement rootScheduleOrder_hubH = jpScheduleOrder_hubH.parse(new InputStreamReader((InputStream) requestScheduleOrder_hubH.getContent())); //Convert the input stream to a json element
+			    String   rootobjScheduleOrder_hubH= rootScheduleOrder_hubH.getAsJsonObject().get("aggregations").getAsJsonObject().get("SUM(order_item_quantity)").getAsJsonObject().get("value").getAsString();
+			     ScheduleOrder_hubHyd +=    Double.parseDouble(rootobjScheduleOrder_hubH);
+			    //System.out.println(rootobjScheduleOrder_hub+"Schedule order Hub Level "+hubid);
+			    //May be an array, may be an object. 
+			   // System.out.println(rootobjScheduleOrder_hubH+"Schedule order Hub Level "+hubIDH);
+			     System.out.println(ScheduleOrder_hubHyd+"Schedule order Hub Level hydrabad "+hubIDH); 
+			     
+	       }
+	    
+	}
+	@Test(priority=3)
+	public void scheduleOrder() throws Throwable
+	{
+		
+		 String dateString=rd.readDataFromExcel(excelFilePath, "Dataplanning", 8, 30);
+			
+			String dateDPTsam="'"+dateString+"'";
+		 ScheduleOrder=ScheduleOrder_hubHyd+ScheduleOrder_Bangalore;
+		    System.out.println(ScheduleOrder+"Total schedule order");
+		    
+		    String ssDispatchPlanHYD=rd.readDataFromExcel(excelFilePath, "Dataplanning", 8, 42);
+		    String sURLDispatchPlanHyd =baseprodURLl+URLEncoder.encode(ssDispatchPlanHYD)+dateDPTsam;
+		       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP)+dateDPT+"and version="+version; 
+		       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP);
+		      // System.out.println(sURLScheduleOrder_hub);
+		       
+		       URL urlDispPlanHyd = new URL(sURLDispatchPlanHyd);
+			    URLConnection requestDispatchPlanHyd = urlDispPlanHyd.openConnection();
+			    requestDispatchPlanHyd.connect();
+
+			    // Convert to a JSON object to print data
+			    JsonParser jpDispatchPlanHyd = new JsonParser(); //from gson
+			    JsonElement rooturlDispPlanHyd = jpDispatchPlanHyd.parse(new InputStreamReader((InputStream) requestDispatchPlanHyd.getContent())); //Convert the input stream to a json element
+			    String rootobjurlDispPlanHyd= rooturlDispPlanHyd.getAsJsonObject().get("aggregations").getAsJsonObject().get("SUM(dispatch_plan_qty)").getAsJsonObject().get("value").getAsString();
+			    dispatchQtyHyd=Double.parseDouble(rootobjurlDispPlanHyd);
+			    //May be an array, may be an object. 
+			    System.out.println(rootobjurlDispPlanHyd+"Dispatch Plan for Hydrabad");	
+			
+			    String ssDispatchPlanBANG=rd.readDataFromExcel(excelFilePath, "Dataplanning", 8, 43);
+			    String sURLDispatchPlanBANG =baseprodURLl+URLEncoder.encode(ssDispatchPlanBANG)+dateDPTsam;
+			       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP)+dateDPT+"and version="+version; 
+			       // String sURLdp =baseprodURLl+URLEncoder.encode(ssDP);
+			      // System.out.println(sURLScheduleOrder_hub);
+			       
+			       URL urlDispPlanBANG = new URL(sURLDispatchPlanBANG);
+				    URLConnection requestDispatchPlanBANG = urlDispPlanBANG.openConnection();
+				    requestDispatchPlanBANG.connect();
+
+				    // Convert to a JSON object to print data
+				    JsonParser jpDispatchPlanBANG = new JsonParser(); //from gson
+				    JsonElement rooturlDispPlanBANG = jpDispatchPlanBANG.parse(new InputStreamReader((InputStream) requestDispatchPlanBANG.getContent())); //Convert the input stream to a json element
+				    String rootobjurlDispPlanBANG= rooturlDispPlanBANG.getAsJsonObject().get("aggregations").getAsJsonObject().get("SUM(dispatch_plan_qty)").getAsJsonObject().get("value").getAsString();
+				    
+				    //May be an array, may be an object. 
+				    System.out.println(rootobjurlDispPlanBANG+"Dispatch Plan for BANGALORE");	
+				    
+				 dispatchQtyBang=Double.parseDouble(rootobjurlDispPlanBANG);
+				     
+				 double  dispatchQtyBang95=(95*dispatchQtyBang)/100;
+				 System.out.println(dispatchQtyBang95+"95 % of Dispatch qty for bangalore ");
+				 double dispatch=dispatchQtyBang95+dispatchQtyHyd+ScheduleOrder;
+				 System.out.println(dispatch+" Total dispatch equal to Production Plan "+totalProductionPlan);
+	}
+//	public double dispatchPlan_Hydrabad()
+//	{
+//		
+//		
+//		
+//		return dispatchPlanHyd;
+//	}
 	@DataProvider
 	public Object[][] getData()
 	{
